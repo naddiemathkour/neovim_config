@@ -15,13 +15,31 @@ end)
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'pyright', 'ts_ls' }
+  ensure_installed = { 'pyright', 'ts_ls', 'emmet_ls' }
 })
 
 local lspconfig = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.pyright.setup{}
 lspconfig.ts_ls.setup{}
+lspconfig.emmet_ls.setup({
+  capabilities = capabilities,
+  filetypes = {
+    "css", "less", "sass", "scss", "html"
+  },
+  init_options = {
+    html = {
+      options = {
+        ["bem.enabled"] = true,
+        ["comment.enabled"] = true,
+        ["output.format"] = true,
+        ["output.selfClosingStyle"] = "html",
+      }
+    }
+  }
+})
 
 local cmp = require('cmp')
 

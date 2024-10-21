@@ -40,6 +40,15 @@ packer.startup(function(use)
   }
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'windwp/nvim-autopairs'
+  use 'hrsh7th/nvim-cmp'              -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp'          -- LSP source for nvim-cmp
+  use 'hrsh7th/cmp-buffer'            -- Buffer completion source
+  use 'hrsh7th/cmp-path'              -- Path completion source
+  use 'hrsh7th/cmp-cmdline'           -- Command-line completion source
+  use 'hrsh7th/cmp-nvim-autopairs'    -- Autopairs integration
+  use 'saadparwaiz1/cmp_luasnip'      -- Snippet completion source
+  use 'L3MON4D3/LuaSnip'              -- Snippet engine
+  use 'windwp/nvim-ts-autotag'        -- Auto-closing HTML tags
 end)
 
 -- NeoTree Configuration
@@ -67,5 +76,30 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",  -- Install all parsers
   highlight = {
     enable = true,            -- Enable syntax highlighting
+  },
+}
+
+-- cmp and luasnip
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)  -- For snippet expansion
+    end,
+  },
+  mapping = {
+    ['<C-n>'] = cmp.mapping.select_next_item(), -- Select next item
+    ['<C-p>'] = cmp.mapping.select_prev_item(), -- Select previous item
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Confirm selection
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Confirm on Enter
+  },
+  sources = {
+    { name = 'nvim_lsp' },          -- LSP source
+    { name = 'nvim-autopairs' },    -- Autopairs source
+    { name = 'luasnip' },            -- Snippet source
+    { name = 'buffer' },             -- Buffer source
+    { name = 'path' },               -- Path source
   },
 }
