@@ -27,3 +27,11 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 -- Disable Page Up and Page Down
 vim.api.nvim_set_keymap('n', '<PageUp>', '<NOP>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<PageDown>', '<NOP>', { noremap = true, silent = true })
+
+-- Terminal
+vim.api.nvim_create_augroup('TerminalSettings', { clear = true })
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = 'TerminalSettings',
+  pattern = '*',
+  command = 'setlocal nonumber norelativenumber | startinsert | resize 10 | vertical resize 80',
+})

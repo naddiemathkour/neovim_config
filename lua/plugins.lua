@@ -58,7 +58,7 @@ require("neo-tree").setup({
       event = "file_open_requested",
       handler = function()
         -- Auto close NeoTree when a file is opened
-        require("neo-tree.command").execute({ action = "close" })
+        require("neo-tree.command").execute({ action = "close" }) -- Change to "close" if wanted
       end
     },
   },
