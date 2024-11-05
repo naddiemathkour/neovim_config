@@ -19,9 +19,10 @@ vim.api.nvim_set_keymap('t', ':h', '<C-\\><C-n>:hide<CR>', { noremap = true, sil
 
 -- Tabs
 vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'tl', ':tabmove +1<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'th', ':tabmove -1<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'tt', ':tabNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-t>l', ':tabmove +1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-t>h', ':tabmove -1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'tl', ':tabnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'th', ':tabprevious<CR>', { noremap = true, silent = true })
 
 -- Windows
 vim.api.nvim_set_keymap('n', '<Leader>wv', ':vsp<CR>', { noremap = true, silent = true })
