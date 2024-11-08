@@ -30,3 +30,13 @@ vim.api.nvim_set_keymap('n', '<Leader>wl', '<C-w>l', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<Leader>wh', '<C-w>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>wj', '<C-w>j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>wk', '<C-w>k', { noremap = true, silent = true })
+
+-- Disabled Keys
+vim.api.nvim_set_keymap('n', '<PageUp>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<PageDown>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<PageUp>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<PageDown>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<PageUp>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<PageDown>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('c', '<PageUp>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('c', '<PageDown>', '<Nop>', { noremap = true, silent = true })
